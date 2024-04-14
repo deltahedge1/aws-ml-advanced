@@ -1,0 +1,4 @@
+- can you go through setting up and properly removing resources to limit costs
+- what does the adding the repos do (https://us-east-1.console.aws.amazon.com/sagemaker/home?region=us-east-1#/studio/d-hlrrccdlpz2e?tab=environment)
+- how do you set up a GPU
+- can you show us an example of feature store

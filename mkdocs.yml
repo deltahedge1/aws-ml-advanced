@@ -1,0 +1,11 @@
+site_name: AWS Advanced Machine Learning
+nav:
+  - Home: index.md
+  - Introduction To Machine Learning: intro-ml.md
+theme:
+  name: material
+  palette:
+    primary: 'green'
+    accent: 'light green'
+  font:
+    text: 'Roboto'
