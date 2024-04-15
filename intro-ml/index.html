@@ -1,0 +1,809 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Introduction To Machine Learning - AWS Advanced Machine Learning</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bcfcd587.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="light-green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#launcing-sagemaker" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AWS Advanced Machine Learning" class="md-header__button md-logo" aria-label="AWS Advanced Machine Learning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AWS Advanced Machine Learning
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introduction To Machine Learning
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AWS Advanced Machine Learning" class="md-nav__button md-logo" aria-label="AWS Advanced Machine Learning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    AWS Advanced Machine Learning
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Introduction To Machine Learning
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Introduction To Machine Learning
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#launcing-sagemaker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Launcing Sagemaker
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-apps-to-save-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete Apps to Save costs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definitions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-does-one-tech-a-computer" class="md-nav__link">
+    <span class="md-ellipsis">
+      How does one tech a computer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#machine-learning-is-everywhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      Machine Learning is Everywhere
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      Useful links
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sagemaker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sagemaker
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequistes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequistes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#business-stakeholders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Business Stakeholders
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#history-of-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      History of ML
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      When To Use ML
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools-and-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tools and Environment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-sagemaker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to SageMaker
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataframes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataframes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#launcing-sagemaker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Launcing Sagemaker
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-apps-to-save-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete Apps to Save costs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definitions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-does-one-tech-a-computer" class="md-nav__link">
+    <span class="md-ellipsis">
+      How does one tech a computer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#machine-learning-is-everywhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      Machine Learning is Everywhere
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      Useful links
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sagemaker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sagemaker
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequistes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequistes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#business-stakeholders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Business Stakeholders
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#history-of-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      History of ML
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      When To Use ML
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools-and-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tools and Environment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-sagemaker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction to SageMaker
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dataframes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataframes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Introduction To Machine Learning</h1>
+
+<h2 id="launcing-sagemaker">Launcing Sagemaker</h2>
+<p>Amazon SageMaker &gt; Domains &gt;Domain: QuickSetupDomain-20240414T002374 &gt; space management &gt; <spaces name> &gt; launch studio</p>
+<p><img alt="sage maker studio" src="../imgs/sagemaker-studio.png" /></p>
+<h2 id="delete-apps-to-save-costs">Delete Apps to Save costs</h2>
+<p>Click the space
+<img alt="sage maker studio" src="../imgs/sagemaker-delete1.png" /></p>
+<p>Scroll down and click the app to delete
+<img alt="sage maker studio" src="../imgs/sagemaker-delete2.png" /></p>
+<h2 id="definitions">Definitions</h2>
+<ul>
+<li><strong>Machine learning</strong> is a subfield of artificial intelligence, which is broadly defined as the capability of a machine to imitate intelligent human behavior.</li>
+<li><strong>Artificial intelligence</strong> systems are used to perform complex tasks in a way that is similar to how humans solve problems.</li>
+</ul>
+<h2 id="how-does-one-tech-a-computer">How does one tech a computer</h2>
+<ul>
+<li>The idea was can we create instructions for the computer to create their own set of instructions</li>
+<li>Eventually, we started to teach computers, that with enough data, and the right set of instructions, they can engineer their own instructions</li>
+</ul>
+<h2 id="machine-learning-is-everywhere">Machine Learning is Everywhere</h2>
+<ul>
+<li>Reccomender systems on youtube, or spotify</li>
+<li>Medical field in medical imaging in CT and MIR scans</li>
+</ul>
+<h2 id="useful-links">Useful links</h2>
+<ul>
+<li><a href="https://web.stanford.edu/~hastie/ElemStatLearn/">Elements of statistical learning</a></li>
+<li><a href="https://www.statlearning.com/">Introduction to machine learning</a></li>
+</ul>
+<h2 id="sagemaker">Sagemaker</h2>
+<p>AWS machine learning service</p>
+<ol>
+<li>Using Sagemaker studio<ul>
+<li>use it to access datasets from S3 and perform data analysis and functions in AWS tools</li>
+<li>perform data analysis and feature engineering with Data Wrangler</li>
+<li>perform data analysis and feature engineering with pandas in sagemaker studio</li>
+<li>label new data for a dataset using Sagemaker ground truth</li>
+</ul>
+</li>
+<li>Differenciate scenarios where ML can be used<ul>
+<li>design a domain data, and model outline for a case study</li>
+<li>build ML life cycle and apply to dataset</li>
+<li>differenciate between supervised and unsupervised models and apply them to an appropriate dataset</li>
+<li>differenciate between regression and classification models</li>
+</ul>
+</li>
+<li>Build maching learning models using Sagemaker tools<ul>
+<li>load dataset, create 3 data set types, identify features/values in SageMaker</li>
+<li>create new features from data</li>
+<li>train (fit) a regression and classifcation model using sklearn</li>
+<li>evaluate a trained model using metrics like MSE, RMSE, r2, accuracy, precision, f1</li>
+</ul>
+</li>
+</ol>
+<h2 id="prerequistes">Prerequistes</h2>
+<ol>
+<li><a href="https://docs.python.org/3/tutorial/">python3 tutorial</a></li>
+<li><a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html">pandas tutorial</a></li>
+<li><a href="https://jupyterlab.readthedocs.io/en/stable/">jupyterlab</a></li>
+</ol>
+<h2 id="business-stakeholders">Business Stakeholders</h2>
+<ul>
+<li><strong>Executives</strong> - they create the KPIs for their business to succeed.
+Product managers (PMs) - work with engineers and users of their platform to improve the overall product.</li>
+<li><strong>Engineers</strong> - main stakeholders of the product. They design and build the product that machine learning will integrate with, they are the ones that make the model come to life.</li>
+<li><strong>Data scientists (DS)</strong> - owners of the data that powers machine learning. They often provide insights or initial models that will need to be integrated into the main product.</li>
+</ul>
+<h2 id="history-of-ml">History of ML</h2>
+<p>Brief Timeline of Machine Learning</p>
+<ul>
+<li>1943 - Warren McCulloch and Walter Pitts created a model for neural networks.</li>
+<li>1950 - Alan Turing published a paper called "Computing Machinery and Intelligence".</li>
+<li>1959 - Arthur Samuel popularized the phrase machine learning.</li>
+<li>1965 - Alexey Ivakhnenko and fellow researchers created the first working deep learning networks.</li>
+<li>1970 - 1980 - ID3 and DART decision tree algorithms were created.</li>
+<li>1998 - Yann LeCun created the stochastic gradient descent algorithm</li>
+<li>2011 - Alex Krizhevsky created the AlexNet neural network</li>
+</ul>
+<p>Present day - GPUs and TPUs power a larger portion of machine learning. Large option of frameworks and libraries for ML.</p>
+<p><a href="https://www.import.io/post/history-of-deep-learning/">History of deep learning</a>
+<a href="https://cloud.withgoogle.com/build/data-analytics/explore-history-machine-learning/">Google interactive timeline</a></p>
+<h2 id="when-to-use-ml">When To Use ML</h2>
+<ol>
+<li>
+<p>Define Problem
+Without a clear definition of what you are trying to solve, it is difficult to build a machine learning model.</p>
+</li>
+<li>
+<p>Measurable Outcome
+Machine learning is built around learning objectives. Objectives need some way of showing that the model is learning, which is where metrics come into play.</p>
+</li>
+<li>
+<p>Not Simple Solution
+Simple solutions can often be built using traditional engineering. Machine learning's performance really proves itself when used on complex problems that individuals find difficult to complete.</p>
+</li>
+<li>
+<p>Feasibility
+If aspects of the machine learning problem are completely impossible, there is no sense in spending time and research for a solution. Working with business stakeholders will assist in proving the reality of a successful outcome.</p>
+</li>
+</ol>
+<h2 id="tools-and-environment">Tools and Environment</h2>
+<ol>
+<li><a href="https://github.com/udacity/cd0385-exercise-files">excersize and template files</a></li>
+<li><a href="https://github.com/udacity/cd0385-project-starter">project template</a></li>
+</ol>
+<h2 id="introduction-to-sagemaker">Introduction to SageMaker</h2>
+<p><a href="https://aws.amazon.com/sagemaker/features/">Sagemaker AWS docs</a></p>
+<p><img alt="sagemaker-services" src="../imgs/sagemaker-services.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Sagemaker service</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sagemaker studio</td>
+<td>cloud based IDE focused on jupyterlab, and do the whole ML lifecycle, and share and collaborate the cloud</td>
+</tr>
+<tr>
+<td>Data wrangler</td>
+<td>perform EDA, feature engineering, and get insights in the IDE</td>
+</tr>
+<tr>
+<td>Ground truth</td>
+<td>provides the infastructure to complete annotating data end to end</td>
+</tr>
+<tr>
+<td>Feature store</td>
+<td>Feature Store manages all of your features, providing a centralized location to store, update, share, and obtain features.</td>
+</tr>
+<tr>
+<td>Training pipeline/Endpoint</td>
+<td>EC2 instance (), S3 (object store), lambda (serverless computing, small bits of code that you can glue together)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="dataframes">Dataframes</h2>
+<ul>
+<li>DataFrames are a container for your data</li>
+<li>Rows are individual events</li>
+<li>Columns are features and target values</li>
+<li>The index is the row's unique ID, making it easier to find a row individually</li>
+</ul>
+<pre><code class="language-python">## Creating a simple DataFrame from a dictionary of values
+import pandas as pd
+
+df = pd.DataFrame(
+  {
+    'a': [1, 2, 3, 4, 5],
+    'b': ['a', 'b', 'c', 'd', 'f'],
+    'c': [5, 4, 3, 2, 1],
+  }
+)
+</code></pre>
+<p><code>df.describe()</code> provides summary statistics
+For numerical values, it provides data for each feature:</p>
+<p>count - number of rows
+mean - average value
+std - standard deviation
+min - minimum value
+25/50/75% - percentile values
+max - maximum value</p>
+<pre><code class="language-python">print(df.describe())
+
+              a         c
+count  5.000000  5.000000
+mean   3.000000  3.000000
+std    1.581139  1.581139
+min    1.000000  1.000000
+25%    2.000000  2.000000
+50%    3.000000  3.000000
+75%    4.000000  4.000000
+max    5.000000  5.000000
+</code></pre>
+<p><code>df.hist()</code> plots histograms
+- Plot the distribution of values
+- Help identify outliers or unexpected values
+- Normal, Uniform, chi-square, F are examples of different distributions</p>
+<p><code>df.corr()</code> calculates a correlation matrix
+- Correlation is the relationship between two variables
+- Values from correlation range from -1.0 to 1.0
+- -1.0 is a strong negative relationship
+- 1.0 is a strong positive relationship
+- Diagonal matrix values always 1.0
+- Strong positive or negative relationships add little to ML models</p>
+<pre><code class="language-python">print(df.corr())
+&quot;&quot;&quot;
+     a    c
+a  1.0 -1.0
+c -1.0  1.0
+&quot;&quot;&quot;
+</code></pre>
+<p>Information Gain - one piece of information would be to check outside if its raining, and the other is checking your weather app using both would not be useful</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>
