@@ -4,14 +4,20 @@ Amazon SageMaker > Domains >Domain: QuickSetupDomain-20240414T002374 > space man
 
 ![sage maker studio](imgs/sagemaker-studio.png)
 
-
 ## Delete Apps to Save costs
+
+Close all jupyter notebooks
+
 
 Click the space
 ![sage maker studio](imgs/sagemaker-delete1.png)
 
 Scroll down and click the app to delete
 ![sage maker studio](imgs/sagemaker-delete2.png)
+
+Delete EFS
+![EFS](imgs/EFS-delete.png)
+
 
 ## Definitions
 
