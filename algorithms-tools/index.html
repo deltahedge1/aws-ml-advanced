@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="../intro-ml/">
+      
+      
+        <link rel="next" href="../deeplearning/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -16,7 +20,7 @@
     
     
       
-        <title>How to Create Budget Alerts - AWS Advanced Machine Learning</title>
+        <title>Algorithms And Tools - AWS Advanced Machine Learning</title>
       
     
     
@@ -66,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#how-to-create-budget-alerts" class="md-skip">
+        <a href="#autogluon" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              How to Create Budget Alerts
+              Algorithms And Tools
             
           </span>
         </div>
@@ -212,17 +216,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -236,7 +242,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Introduction To Machine Learning
@@ -268,10 +274,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../algorithms-tools/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Algorithms And Tools
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -280,6 +304,33 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#autogluon" class="md-nav__link">
+    <span class="md-ellipsis">
+      AutoGluon
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -372,8 +423,23 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#autogluon" class="md-nav__link">
+    <span class="md-ellipsis">
+      AutoGluon
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -388,49 +454,54 @@
                   
 
 
-<h1 id="how-to-create-budget-alerts">How to Create Budget Alerts</h1>
-<ol>
-<li>
-<p>create a new role</p>
+  <h1>Algorithms And Tools</h1>
+
+<h2 id="autogluon">AutoGluon</h2>
+<p>AutoGluon is a framework that automates the processing, creating and tuning of ML models.</p>
+<p>Main parameters are
+1. target value
+2. how long to train for</p>
+<p>automates everything else</p>
+<pre><code class="language-python">import pandas as pd
+from autogluon.tabular import TabularPredictor
+
+df = pd.DataFrame(
+    [[1, 2, 0], [3, 4, 1], [5, 6, 0], [7, 8, 1]],
+    columns=[&quot;num&quot;, &quot;amount&quot;, &quot;target&quot;]
+)
+
+predictor = TabularPredictor(label=&quot;target&quot;).fit(
+    train_data=df,
+    time_limit=60,
+    presets=&quot;best_quality&quot;
+)
+
+# output a summary of created models
+predictor.fit_summary()
+
+# evaluation best model from hyperparameter search
+performance = predictor.evaluate(df)
+
+# leaderboard   
+predictor.leaderboard(silent=True).plot(kind=&quot;bar&quot;, x=&quot;model&quot;, y=&quot;score_val&quot;)
+</code></pre>
+<pre><code>predictor.transform_features(test_data)
+predictor.feature_importance(test_data)
+predictor.model_best
+</code></pre>
+<pre><code class="language-python">from autogluon.common import space #check this form hyperparameter tuning
+</code></pre>
 <ul>
-<li>Open Roles.       </li>
-<li>Click Create role button.     </li>
-<li>Choose AWS account.       </li>
-<li>Click next.       </li>
-<li>Attach <code>AWSBudgetsActionsWithAWSResourceControlAccess</code> Policy to it.      </li>
-<li>CLick next.       </li>
-<li>Type a name for that role.        </li>
-<li>Click create role.</li>
-</ul>
+<li>
+<p><a href="https://auto.gluon.ai/stable/index.html">AutoGluon documentation</a></p>
 </li>
 <li>
-<p>Switch to that role.     </p>
-<ul>
-<li>Search for the role in the roles console.     </li>
-<li>Click on the role link.       </li>
-<li>Copy the Link to switch roles in the console.     </li>
-<li>Paste the link in the browser URL window and Enter to switch to that role.</li>
-</ul>
+<p><a href="https://en.wikipedia.org/wiki/Automated_machine_learning">AutoGluon Wiki page</a></p>
 </li>
 <li>
-<p>Budget Setup:        </p>
-<ul>
-<li>Search for Budgets in the AWS Console and open it.        </li>
-<li>Click Create Budget       </li>
-<li>Customize (Advance) &gt; Cost budget - Recommended       </li>
-<li>Click Next        </li>
-<li>Type the Budget name.     </li>
-<li>Select the Period to be Daily.        </li>
-<li>Enter your budgeted Amount ($): type 0.5 (half a dollar).     </li>
-<li>Click Next        </li>
-<li>Click Add an alert threshold.     </li>
-<li>Set the Threshold by typing 100 in the Threshold box.     </li>
-<li>Type your email in the Email recepients box.      </li>
-<li>Click Next, then Create budget to finish and create the budget.       </li>
-<li>Sign out of the account and repeat the process for Course 4 account.</li>
-</ul>
+<p><a href="https://github.com/windmaple/awesome-AutoML">awesome-AutoML</a></p>
 </li>
-</ol>
+</ul>
 
 
 

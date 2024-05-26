@@ -16,7 +16,7 @@
     
     
       
-        <title>How to Create Budget Alerts - AWS Advanced Machine Learning</title>
+        <title>Project1 - AWS Advanced Machine Learning</title>
       
     
     
@@ -65,11 +65,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#how-to-create-budget-alerts" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -102,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              How to Create Budget Alerts
+              Project1
             
           </span>
         </div>
@@ -372,8 +367,6 @@
   
   
   
-    
-  
   
 </nav>
                   </div>
@@ -388,49 +381,42 @@
                   
 
 
-<h1 id="how-to-create-budget-alerts">How to Create Budget Alerts</h1>
-<ol>
-<li>
-<p>create a new role</p>
+  <h1>Project1</h1>
+
 <ul>
-<li>Open Roles.       </li>
-<li>Click Create role button.     </li>
-<li>Choose AWS account.       </li>
-<li>Click next.       </li>
-<li>Attach <code>AWSBudgetsActionsWithAWSResourceControlAccess</code> Policy to it.      </li>
-<li>CLick next.       </li>
-<li>Type a name for that role.        </li>
-<li>Click create role.</li>
+<li><a href="https://github.com/deltahedge1/cd0385-project-starter">My git repo</a></li>
+<li><a href="https://github.com/udacity/cd0385-project-starter">Github project template</a></li>
+<li><a href="https://www.kaggle.com/competitions/bike-sharing-demand/data">Kaggle bike sharing demand</a></li>
 </ul>
-</li>
-<li>
-<p>Switch to that role.     </p>
-<ul>
-<li>Search for the role in the roles console.     </li>
-<li>Click on the role link.       </li>
-<li>Copy the Link to switch roles in the console.     </li>
-<li>Paste the link in the browser URL window and Enter to switch to that role.</li>
-</ul>
-</li>
-<li>
-<p>Budget Setup:        </p>
-<ul>
-<li>Search for Budgets in the AWS Console and open it.        </li>
-<li>Click Create Budget       </li>
-<li>Customize (Advance) &gt; Cost budget - Recommended       </li>
-<li>Click Next        </li>
-<li>Type the Budget name.     </li>
-<li>Select the Period to be Daily.        </li>
-<li>Enter your budgeted Amount ($): type 0.5 (half a dollar).     </li>
-<li>Click Next        </li>
-<li>Click Add an alert threshold.     </li>
-<li>Set the Threshold by typing 100 in the Threshold box.     </li>
-<li>Type your email in the Email recepients box.      </li>
-<li>Click Next, then Create budget to finish and create the budget.       </li>
-<li>Sign out of the account and repeat the process for Course 4 account.</li>
-</ul>
-</li>
-</ol>
+<pre><code class="language-bash">!pip install -U pip
+!pip install -U setuptools wheel
+!pip install torch==2.1.2 torchvision==0.16.2 --index-url https://download.pytorch.org/whl/cpu
+!apt-get update; apt-get install -y graphviz graphviz-dev
+!pip install autogluon kaggle pygraphviz dask[dataframe]
+</code></pre>
+<pre><code class="language-python"># you need a kaggle.json file
+kaggle competitions download -c bike-sharing-demand
+</code></pre>
+<p>project 1 code snippet</p>
+<pre><code class="language-python">
+remove_columns = [&quot;casual&quot;, &quot;registered&quot;]
+train_ex_cas_reg = train.drop(columns=remove_columns)
+
+predictor = TabularPredictor(label=&quot;count&quot;, eval_metric=&quot;root_mean_squared_error&quot;).fit(
+    train_data=train_ex_cas_reg,
+    time_limit=600,
+    presets=&quot;best_quality&quot;
+)
+</code></pre>
+<p>scoring function </p>
+<pre><code class="language-python">from autogluon.core.metrics import make_scorer
+import sklearn
+
+def rmsle_func(y_true, y_pred, **kwargs):    
+    return sklearn.metrics.root_mean_squared_log_error(y_true, y_pred, **kwargs)
+
+root_mean_squared_log_error = make_score(&quot;root_mean_squared_log_error&quot;, rmsle_func, optimum=0, greater_is_better=False)
+</code></pre>
 
 
 
